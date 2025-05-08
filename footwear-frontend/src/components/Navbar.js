@@ -17,10 +17,7 @@
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from 'react-router-dom';
-import Footer from './Footer';
-import HomePage from '../pages/home';
-import Home1 from '../pages/home1';
-import Slider2 from './slider1';
+
 
 const Navbar = () => {
   return (
@@ -116,19 +113,17 @@ const Navbar = () => {
        
       `}</style>
 
-      <header>
+<header>
         <div className="navbar">
           <div className="nav-logo">
             <div className="logo"></div>
           </div>
 
-          &nbsp;&nbsp;
-
           <div className="nav-address border">
-            <p className="address-first">Deliver To</p>
+            <p>Deliver To</p>
             <div className="add-icon">
               <i className="fa-solid fa-location-dot"></i>
-              <p className="address-second">HOME</p>
+              <p>HOME</p>
             </div>
           </div>
 
@@ -140,26 +135,21 @@ const Navbar = () => {
           </div>
 
           <div className="nav-signin border">
-            <p><i className="fa-regular fa-circle-user"></i> <span>Hello,</span></p>
-            <p className="nav-second">Login</p>
+            <p><i className="fa-regular fa-circle-user"></i> Hello,</p>
+            <p className="nav-second"><Link to="/login">Login</Link></p>
           </div>
 
           <div className="nav-return border">
-            <p><span>Returns</span></p>
+            <p>Returns</p>
             <p className="nav-second">& Orders</p>
           </div>
 
           <div className="nav-cart border">
             <i className="fa-solid fa-cart-shopping"></i>
-            <span><Link target="_blank" to="/ShoeDetail">Cart</Link></span>
+            <span><Link to="/ShoeDetail">Cart</Link></span>
           </div>
         </div>
       </header>
-      <HomePage />
-      
-      <Home1 />
-      <Slider2 />
-      <Footer />
 
     </>
   );
