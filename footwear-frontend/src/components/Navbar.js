@@ -1,25 +1,14 @@
-
-
-
-
-//   <nav className="navbar">
-//     <h2>👟 Footwear Shop</h2>
-//     <ul>
-//       <li><Link to="">Home</Link></li>
-//       <li><Link to="/ShoeDetail" element>Products</Link></li>
-//       <li><Link to="/cart">Cart</Link></li>
-//       <li><Link to="/login">Login</Link></li>
-//     </ul>
-//   </nav>
-// );
-
-
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const gotohome = () => {
+    navigate('/'); // Redirect to /payment
+  };
+
   return (
     <>
       <style>{`
@@ -77,7 +66,7 @@ const Navbar = () => {
           justify-content: center;
           align-items: center;
           font-size: 1.5rem;
-          background-color:rgb(241, 91, 65);
+          background-color: rgb(241, 91, 65);
           border-top-right-radius: 25px;
           border-bottom-right-radius: 25px;
           color: #0f1111;
@@ -85,15 +74,6 @@ const Navbar = () => {
 
         .nav-search:hover {
           border: 2px solid rgb(231, 159, 16);
-        }
-
-        .search-select {
-          background-color: #f3f3f3;
-          width: 50px;
-          text-align: center;
-          border-top-left-radius: 25px;
-          border-bottom-left-radius: 25px;
-          border: none;
         }
 
         .border {
@@ -110,20 +90,53 @@ const Navbar = () => {
           background-color: #eeb926; 
           color: white;
         }
-       
+
+        .nav-button {
+          padding: 8px 16px;
+          background-color:rgb(0, 0, 0);
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+          background-color:rgb(0, 0, 0);
+        }
+
+        .nav-cart, .nav-signin, .nav-return {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-cart i, .nav-signin i, .nav-return i {
+          font-size: 1.5rem;
+        }
+
+        .nav-cart span, .nav-signin p, .nav-return p {
+          margin-top: 5px;
+        }
+
+        .nav-cart, .nav-return, .nav-signin {
+          color: white;
+        }
+
       `}</style>
 
-<header>
+      <header>
         <div className="navbar">
           <div className="nav-logo">
             <div className="logo"></div>
           </div>
 
           <div className="nav-address border">
-            <p>Deliver To</p>
+            
             <div className="add-icon">
               <i className="fa-solid fa-location-dot"></i>
-              <p>HOME</p>
+              <button onClick={gotohome} className="nav-button">Home</button>
             </div>
           </div>
 
@@ -135,22 +148,18 @@ const Navbar = () => {
           </div>
 
           <div className="nav-signin border">
-            <p><i className="fa-regular fa-circle-user"></i> Hello,</p>
-            <p className="nav-second"><Link to="/login">Login</Link></p>
+            
+            <button className="nav-button" onClick={() => navigate('/login')}>Login</button>
           </div>
 
-          <div className="nav-return border">
-            <p>Returns</p>
-            <p className="nav-second">& Orders</p>
-          </div>
+         
 
           <div className="nav-cart border">
-            <i className="fa-solid fa-cart-shopping"></i>
-            <span><Link to="/ShoeDetail">Cart</Link></span>
+            
+            <button className="nav-button" onClick={() => navigate('/cart')}>  <i className="fa-solid fa-cart-shopping"></i> Cart</button>
           </div>
         </div>
       </header>
-
     </>
   );
 };
