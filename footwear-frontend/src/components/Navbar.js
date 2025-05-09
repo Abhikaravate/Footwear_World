@@ -155,8 +155,12 @@ const Navbar = () => {
          
 
           <div className="nav-cart border">
+
             
             <button className="nav-button" onClick={() => navigate('/cart')}>  <i className="fa-solid fa-cart-shopping"></i> Cart</button>
+
+            
+
           </div>
         </div>
       </header>

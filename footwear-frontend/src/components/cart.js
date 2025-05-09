@@ -97,6 +97,7 @@ const cardStyle = {
   alignItems: 'center',
 };
 
+
 const imageStyle = {
   width: '150px',
   borderRadius: '8px',
@@ -145,3 +146,4 @@ const emptyStyle = {
 };
 
 export default Cart;
+
