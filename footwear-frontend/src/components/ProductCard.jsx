@@ -11,6 +11,37 @@ const ProductView = () => {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // State for current image index
 
+
+  const handleAddToCart = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: product.name,
+          price: product.price,
+          category: product.category,
+          rating: product.rating,
+          availability: product.availability,
+          description: product.description,
+          sizes: product.sizes,
+          image: product.images[0], // You can send only one image or all
+        }),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        alert('✅ Added to cart!');
+      } else {
+        console.error(data);
+        alert('❌ Failed to add to cart.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('❌ Error adding to cart.');
+    }
+  };
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % product.images.length);
@@ -59,8 +90,8 @@ const ProductView = () => {
           <span style={styles.boldText}>Available Sizes:</span>{" "}
           {product.sizes.join(", ")}
         </p>
-        <p> <button onClick={() => navigate('/products')}>
-      View Products
+        <p> <button onClick={handleAddToCart}>
+      add to cart 
     </button></p>
       </div>
     </div>

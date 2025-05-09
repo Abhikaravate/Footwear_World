@@ -1,26 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate , Link } from "react-router-dom";
-import productsData from "../components/productsData"
+import { useNavigate, Link } from "react-router-dom";
+import productsData from "../components/productsData";
 import "./home1.css";
 
 const Home = () => {
   const sliderImages = [
-    
-    "https://i.pinimg.com/736x/15/d0/52/15d0522e82e9c350cf09c4cdb18bf97b.jpg",
-    "footwear-frontend/src/pictures/image.png",
-    "https://m.media-amazon.com/images/I/51TBibrWZdL._SY695_.jpg"
+    "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/3d77e58f-8f36-442b-a54a-ea3960f9d029/custom-nike-blazer-low-shoes-by-you.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
-  const intervalRef = useRef(null);   
+  const intervalRef = useRef(null);
   const navigate = useNavigate();
+
   const showImage = (index) => {
     setFade(false);
     setTimeout(() => {
       setCurrentIndex(index);
       setFade(true);
-    }, 500);
+    }, 300);
   };
 
   const nextImage = () => {
@@ -33,23 +31,25 @@ const Home = () => {
     showImage(newIndex);
   };
 
-  useEffect(() => {
-    intervalRef.current = setInterval(nextImage, 5000);
-    return () => clearInterval(intervalRef.current);
-  }, [currentIndex]);
-
-  const pauseSlider = () => clearInterval(intervalRef.current);
-  const resumeSlider = () => {
+  const startSlider = () => {
+    clearInterval(intervalRef.current);
     intervalRef.current = setInterval(nextImage, 5000);
   };
+
+  const pauseSlider = () => clearInterval(intervalRef.current);
+
+  useEffect(() => {
+    startSlider();
+    return () => clearInterval(intervalRef.current);
+  }, []);
 
   const styles = {
     heroSection: {
       position: "relative",
       textAlign: "center",
       maxWidth: "100%",
-       margin: "auto",
-      height: "400px"
+      margin: "auto",
+      height: "800px"
     },
     sliderBtn: {
       position: "absolute",
@@ -63,17 +63,12 @@ const Home = () => {
       cursor: "pointer",
       zIndex: 2,
     },
-    leftBtn: {
-      left: "10px",
-      top:"200px"
-    },
-    rightBtn: {
-      right: "10px",
-      top:"200px"
-    },
+    leftBtn: { left: "10px" },
+    rightBtn: { right: "10px" },
     image: {
       width: "100%",
       height: "80%",
+      objectFit: "cover",
       opacity: fade ? 1 : 0,
       transition: "opacity 0.5s ease-in-out",
     },
@@ -109,6 +104,8 @@ const Home = () => {
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
       cursor: 'pointer',
       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+      textDecoration: 'none',
+      color: 'inherit',
     },
     productImage: {
       width: '100%',
@@ -130,7 +127,8 @@ const Home = () => {
       fontSize: '1rem',
       color: '#333',
     }
- };
+  };
+
   return (
     <div style={styles.heroSection}>
       <button style={{ ...styles.sliderBtn, ...styles.leftBtn }} onClick={prevImage}>
@@ -138,43 +136,42 @@ const Home = () => {
       </button>
       <img
         src={sliderImages[currentIndex]}
-        alt="Puma shoe model"
+        alt="slider"
         style={styles.image}
         onMouseOver={pauseSlider}
-        onMouseOut={resumeSlider}
+        onMouseOut={startSlider}
       />
       <button style={{ ...styles.sliderBtn, ...styles.rightBtn }} onClick={nextImage}>
         &#10095;
       </button>
-      
+
       <div style={styles.home}>
-      <h1 style={styles.header}>Featured Products</h1>
-      {Object.entries(productsData).map(([brand, products]) => (
-        <div key={brand}>
-          <h2 style={styles.brandTitle}>{brand}</h2>
-          <div style={styles.productGrid}>
-            {products.slice(0, 8).map((product, index) => (
-              <Link
-                to={`/product/${brand}/${index}`}
-                key={`${brand}-${index}`}
-                style={{ ...styles.productCard, textDecoration: 'none' }}
-              >
-                {/* Use the first image from the product's images array */}
-                <img
-                  src={product.images[0]}  // Get the first image in the array
-                  alt={product.name}
-                  style={styles.productImage}
-                />
-                <div style={styles.productInfo}>
-                  <h3 style={styles.productName}>{product.name}</h3>
-                  <p style={styles.productPrice}>{product.price}</p>
-                </div>
-              </Link>
-            ))}
+        <h1 style={styles.header}>Featured Products</h1>
+        {Object.entries(productsData).map(([brand, products]) => (
+          <div key={brand}>
+            <h2 style={styles.brandTitle}>{brand}</h2>
+            <div style={styles.productGrid}>
+              {products.slice(0, 8).map((product, index) => (
+                <Link
+                  to={`/product/${brand}/${index}`}
+                  key={`${brand}-${index}`}
+                  style={styles.productCard}
+                >
+                  <img
+                    src={product.images[0]}
+                    alt={product.name}
+                    style={styles.productImage}
+                  />
+                  <div style={styles.productInfo}>
+                    <h3 style={styles.productName}>{product.name}</h3>
+                    <p style={styles.productPrice}>{product.price}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </div>
   );
 };

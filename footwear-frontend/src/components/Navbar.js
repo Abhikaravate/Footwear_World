@@ -146,7 +146,7 @@ const Navbar = () => {
 
           <div className="nav-cart border">
             <i className="fa-solid fa-cart-shopping"></i>
-            <span><Link to="/ShoeDetail">Cart</Link></span>
+            <span><Link to="/cart">Cart</Link></span>
           </div>
         </div>
       </header>
