@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import productsData from "../components/productsData";
 import "./home1.css";
 
@@ -7,13 +7,13 @@ const Home = () => {
   const sliderImages = [
     "https://template.canva.com/EAEvi_nhSkQ/2/0/1600w-n0sR_lS9M7c.jpg",
    "https://template.canva.com/EADaiCCaXfQ/1/0/1600w-RJs5QIdSeL4.jpg",
-   
+   "https://template.canva.com/EAE6CxXxW3U/1/0/1600w-v5_R9lKhE5w.jpg"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const intervalRef = useRef(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const showImage = (index) => {
     setFade(false);

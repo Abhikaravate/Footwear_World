@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -19,13 +19,10 @@ const Login = () => {
     try {
       await axios.post('http://localhost:5000/api/login', formData);
 
-    // Save to localStorage
-    localStorage.setItem('user', JSON.stringify(userData));
-      alert('Login successful!');
-      useNavigate('/'); 
+   
       // Optionally redirect using: navigate('/dashboard')
     } catch (err) {
-      alert('Login failed!');
+      alert('Login failed!');   
     }
   };
 
