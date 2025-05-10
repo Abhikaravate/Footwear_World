@@ -5,7 +5,9 @@ import "./home1.css";
 
 const Home = () => {
   const sliderImages = [
-    "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/3d77e58f-8f36-442b-a54a-ea3960f9d029/custom-nike-blazer-low-shoes-by-you.png",
+    "https://template.canva.com/EAEvi_nhSkQ/2/0/1600w-n0sR_lS9M7c.jpg",
+   "https://template.canva.com/EADaiCCaXfQ/1/0/1600w-RJs5QIdSeL4.jpg",
+   
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

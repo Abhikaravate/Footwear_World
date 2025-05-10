@@ -9,6 +9,8 @@ import Slider2 from './components/slider1';
 import ProductView from './components/ProductCard';
 import ProductList from './components/productlist';
 import Cart from './components/cart';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import React, { useState,useEffect } from 'react';
 
 function App() {
@@ -36,6 +38,11 @@ function App() {
         <Route path="/Slider2" element={<Slider2/>} />
         <Route path="/products" element={<ProductList cart={cart} setCart={setCart} />} />
         <Route path="/cart" element={<Cart cart={cart} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+
+
+
 
       </Routes>
     </Router>

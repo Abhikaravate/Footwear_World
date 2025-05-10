@@ -1,23 +1,6 @@
-
-
-
-
-//   <nav className="navbar">
-//     <h2>👟 Footwear Shop</h2>
-//     <ul>
-//       <li><Link to="">Home</Link></li>
-//       <li><Link to="/ShoeDetail" element>Products</Link></li>
-//       <li><Link to="/cart">Cart</Link></li>
-//       <li><Link to="/login">Login</Link></li>
-//     </ul>
-//   </nav>
-// );
-
-
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from 'react-router-dom';
-
 
 const Navbar = () => {
   return (
@@ -30,18 +13,18 @@ const Navbar = () => {
         }
 
         .navbar {
-          height: 60px;
           background-color: black;
           color: white;
           display: flex;
           align-items: center;
-          padding: 35px;
-          justify-content: space-evenly;
+          padding: 0 40px;
+          height: 70px;
+          justify-content: space-between;
         }
 
         .nav-logo {
-          height: 60px;
-          width: 100px;
+          display: flex;
+          align-items: center;
         }
 
         .logo {
@@ -49,108 +32,71 @@ const Navbar = () => {
           background-size: cover;
           background-position: center;
           height: 50px;
-          width: 100%;
+          width: 100px;
         }
 
-        .nav-search {
+        .nav-items {
           display: flex;
-          justify-content: space-evenly;
-          background-color: bisque;
-          width: 620px;
-          height: 40px;
-          border-radius: 25px;
+          gap: 20px;
+          align-items: center;
         }
 
-        .search-input {
-          border: none;
-          outline: none;
-          padding: 8px;
-          border-top-left-radius: 25px;
-          border-bottom-left-radius: 25px;  
-          width: 100%;
+        .nav-button {
+          background-color: transparent;
+          color: white;
+          {/* border: 1px solid white; */}
+          padding: 6px 12px;
+          border-radius: 4px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: all 0.3s ease;
           font-size: 1rem;
         }
 
-        .search-icon {
-          width: 45px;
+        .nav-button:hover {
+          background-color: #eaeded ;
+          color: black;
+          {/* border-color: #eeb926; */}
+        }
+
+        .nav-cart, .nav-signin {
           display: flex;
-          justify-content: center;
           align-items: center;
-          font-size: 1.5rem;
-          background-color:rgb(241, 91, 65);
-          border-top-right-radius: 25px;
-          border-bottom-right-radius: 25px;
-          color: #0f1111;
+          gap: 10px;
         }
 
-        .nav-search:hover {
-          border: 2px solid rgb(231, 159, 16);
+        .fa-cart-shopping, .fa-circle-user {
+          font-size: 1.2rem;
         }
 
-        .search-select {
-          background-color: #f3f3f3;
-          width: 50px;
-          text-align: center;
-          border-top-left-radius: 25px;
-          border-bottom-left-radius: 25px;
-          border: none;
+        .btn {
+          width: 80px;
         }
-
-        .border {
-          border: 1px solid transparent; 
-          padding: 5px; 
-          transition: border-color 0.3s;
-        }
-
-        .border:hover {
-          height: auto;
-          width: auto;
-          border-radius: 20px;
-          border-color: rgb(244, 78, 45);
-          background-color: #eeb926; 
-          color: white;
-        }
-       
       `}</style>
 
-<header>
-        <div className="navbar">
+      <header>
+        <nav className="navbar">
           <div className="nav-logo">
             <div className="logo"></div>
           </div>
 
-          <div className="nav-address border">
-            <p>Deliver To</p>
-            <div className="add-icon">
-              <i className="fa-solid fa-location-dot"></i>
-              <p>HOME</p>
+          <div className="nav-items">
+            <Link to="/" className="nav-button">Home</Link>
+            <Link to="/ShoeDetail" className="nav-button">Products</Link>
+
+            <div className="nav-signin">
+              <i className="fa-regular fa-circle-user"></i>
+              <Link to="/login" className="nav-button">Login</Link>
+              <Link to="/signup" className="nav-button">Signup</Link>
+            </div>
+
+            <div className="nav-cart">
+              <i className="fa-solid fa-cart-shopping"></i>
+              <Link to="/cart" className="nav-button">Cart</Link>
             </div>
           </div>
-
-          <div className="nav-search">
-            <input type="text" placeholder="Search PUMA" className="search-input" />
-            <div className="search-icon">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </div>
-          </div>
-
-          <div className="nav-signin border">
-            <p><i className="fa-regular fa-circle-user"></i> Hello,</p>
-            <p className="nav-second"><Link to="/login">Login</Link></p>
-          </div>
-
-          <div className="nav-return border">
-            <p>Returns</p>
-            <p className="nav-second">& Orders</p>
-          </div>
-
-          <div className="nav-cart border">
-            <i className="fa-solid fa-cart-shopping"></i>
-            <span><Link to="/cart">Cart</Link></span>
-          </div>
-        </div>
+        </nav>
       </header>
-
     </>
   );
 };
