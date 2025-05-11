@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
+ import { navigate, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +16,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const navigate=useNavigate;
     try {
       await axios.post('http://localhost:5000/api/login', formData);
 
-   
+   navigate('/');
       // Optionally redirect using: navigate('/dashboard')
     } catch (err) {
       alert('Login failed!');   
@@ -30,7 +31,7 @@ const Login = () => {
     <div style={styles.container}>
       <form onSubmit={handleSubmit} style={styles.form}>
         <img
-          src="https://images.seeklogo.com/logo-png/11/2/puma-logo-png_seeklogo-113791.png"
+          src="https://template.canva.com/EAGJl0vxbKU/1/0/1600w-1njR_0ecQu4.jpg"
           alt="Logo"
           style={styles.logo}
         />

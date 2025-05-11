@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // ⬅️ Add this
+
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
+ const navigate = useNavigate(); // ⬅️ For navigation
 
   useEffect(() => {
     fetchCartItems();
@@ -26,8 +29,9 @@ const Cart = () => {
       .catch((err) => console.error("Error deleting item:", err));
   };
 
-  const handlePayment = () => {
+  const handlePayment = (product) => {
     alert("Payment processing (placeholder)");
+      navigate('/order', { state: { product } });
   };
 
   return (
@@ -46,9 +50,10 @@ const Cart = () => {
               </div>
 
               <div style={buttonContainerStyle}>
-                <button onClick={handlePayment} style={buttonStyleGreen}>
+                <button onClick={() => handlePayment(product)} style={buttonStyleGreen}>
                   Pay Now
                 </button>
+
                 <button onClick={() => handleRemove(product._id)} style={buttonStyleRed}>
                   Remove
                 </button>

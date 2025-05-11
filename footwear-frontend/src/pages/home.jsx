@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import {  Link } from "react-router-dom";
 import productsData from "../components/productsData";
 import "./home1.css";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const sliderImages = [
     "https://template.canva.com/EAEvi_nhSkQ/2/0/1600w-n0sR_lS9M7c.jpg",
    "https://template.canva.com/EADaiCCaXfQ/1/0/1600w-RJs5QIdSeL4.jpg",
-   "https://template.canva.com/EAE6CxXxW3U/1/0/1600w-v5_R9lKhE5w.jpg"
+   "https://template.canva.com/EAE6CxXxW3U/1/0/1600w-v5_R9lKhE5w.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -103,7 +104,7 @@ const Home = () => {
       overflow: 'hidden',
       background: '#fff',
       borderRadius: '10px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.8)',
       cursor: 'pointer',
       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
       textDecoration: 'none',
@@ -169,13 +170,20 @@ const Home = () => {
                     <p style={styles.productPrice}>{product.price}</p>
                   </div>
                 </Link>
+                 
               ))}
+             
             </div>
+
           </div>
+                 
         ))}
       </div>
+      <Footer/>
     </div>
+    
   );
+   
 };
 
 export default Home;

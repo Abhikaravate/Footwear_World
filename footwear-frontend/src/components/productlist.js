@@ -1,6 +1,7 @@
 import React from 'react';
 import productsData from './productsData'; // Assuming the productsData is in the same folder
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 const ProductList = ({ cart, setCart }) => {
   // Function to handle adding products to the cart
   const navigate = useNavigate();
@@ -36,29 +37,11 @@ const addToCart = (product) => {
         </div>
       ))}
 
-      <Cart cart={cart} />
+     
     </div>
+    
   );
 };
 
-const Cart = ({ cart }) => {
-  return (
-    <div className="cart">
-      <h2>Shopping Cart</h2>
-      {cart.length > 0 ? (
-        <ul>
-          {cart.map((product, index) => (
-            <li key={index}>
-              <h4>{product.name}</h4>
-              <p>Price: {product.price}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Your cart is empty.</p>
-      )}
-    </div>
-  );
-};
 
 export default ProductList;

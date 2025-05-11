@@ -11,6 +11,9 @@ import ProductList from './components/productlist';
 import Cart from './components/cart';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Order from './pages/order';
+import Confirm from './pages/confirm';
+
 import React, { useState,useEffect } from 'react';
 
 function App() {
@@ -40,6 +43,9 @@ function App() {
         <Route path="/cart" element={<Cart cart={cart} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/order" element={<Order />} />
+       <Route path="/confirm" element={<Confirm />} />
+         
 
 
 

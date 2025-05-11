@@ -28,7 +28,7 @@ const Navbar = () => {
         }
 
         .logo {
-          background-image: url('https://images.seeklogo.com/logo-png/11/2/puma-logo-png_seeklogo-113791.png');
+          background-image: url('https://template.canva.com/EAGJl0vxbKU/1/0/1600w-1njR_0ecQu4.jpg');
           background-size: cover;
           background-position: center;
           height: 50px;
@@ -82,7 +82,7 @@ const Navbar = () => {
 
           <div className="nav-items">
             <Link to="/" className="nav-button">Home</Link>
-            <Link to="/ShoeDetail" className="nav-button">Products</Link>
+            <Link to="/products" className="nav-button">Products</Link>
 
             <div className="nav-signin">
               <i className="fa-regular fa-circle-user"></i>
@@ -97,7 +97,9 @@ const Navbar = () => {
           </div>
         </nav>
       </header>
+
     </>
+
   );
 };
 
