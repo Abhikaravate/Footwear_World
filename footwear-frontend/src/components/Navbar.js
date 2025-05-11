@@ -89,7 +89,6 @@ const Navbar = () => {
               <Link to="/login" className="nav-button">Login</Link>
               <Link to="/signup" className="nav-button">Signup</Link>
             </div>
-
             <div className="nav-cart">
               <i className="fa-solid fa-cart-shopping"></i>
               <Link to="/cart" className="nav-button">Cart</Link>
